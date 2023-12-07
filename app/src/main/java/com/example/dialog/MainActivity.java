@@ -1,10 +1,17 @@
 package com.example.dialog;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Dialog;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -14,11 +21,12 @@ public class MainActivity extends AppCompatActivity {
 
     // 3- create a arraylist for store the data
     ArrayList<ProductModel> product = new ArrayList<>();
-
-
-
     RecyclerView recyclerView;
 
+
+    // create a object of the toolbar;
+
+    Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,5 +55,47 @@ public class MainActivity extends AppCompatActivity {
         RecyclerProductAdaptor recyclerProductAdaptor = new RecyclerProductAdaptor(getApplicationContext(), product);
         recyclerView.setAdapter(recyclerProductAdaptor);
 
+
+
+        // setup the toolbar
+        toolbar = findViewById(R.id.toolbar);
+
+        //STEP 1
+        setSupportActionBar(toolbar);
+
+
+        //step 2 --> by default give the backbutotn
+
+        if( getSupportActionBar()!=null)
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        toolbar.setTitle("My App");
+        toolbar.setSubtitle("Jawad Mughal");
+
+
+
+        // need to create new Dialog bon
+
+
+    }
+
+
+    // this menu is the reference where we need to show the menu
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        new MenuInflater(this).inflate(R.menu.menu_opt, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int itemId = item.getItemId();
+        if(itemId == R.id.open)
+            Toast.makeText(this, "Open Menu", Toast.LENGTH_SHORT).show();
+        else if(itemId == R.id.close)
+            Toast.makeText(this, "Close  Menu", Toast.LENGTH_SHORT).show();
+        else
+            Toast.makeText(this, "Other  Menu", Toast.LENGTH_SHORT).show();
+        return super.onOptionsItemSelected(item);
     }
 }
