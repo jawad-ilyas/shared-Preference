@@ -19,7 +19,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:orientation="vertical"
-
+            android:id="@+id/llrow"
             android:layout_height="match_parent">
 
 
@@ -36,7 +36,7 @@
                 android:layout_height="wrap_content"
                 android:text="Product No 1"
                 android:gravity="start"
-                android:textSize="30sp"
+                android:textSize="27sp"
                 android:paddingLeft="15dp"
                 android:textColor="#000"
                 android:id="@+id/tvProductName"

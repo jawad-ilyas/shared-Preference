@@ -18,4 +18,9 @@ public class ProductModel {
         this.rbProductRating = rbProductRating;
     }
 
+    public ProductModel(String tvProductName, String tvProductCurrentPrice, int ivProductImg) {
+        this.tvProductName = tvProductName;
+        this.tvProductCurrentPrice = tvProductCurrentPrice;
+        this.ivProductImg = ivProductImg;
+    }
 }
